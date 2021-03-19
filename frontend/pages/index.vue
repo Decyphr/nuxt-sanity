@@ -6,29 +6,24 @@
         nuxt-sanity
       </h1>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+        <div v-for="movie in movies" :key="movie._id">
+          <h3>{{ movie.title }}</h3>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import { groq } from '@nuxtjs/sanity';
+
+const query = groq`{ "movies": *[_type == "movie"] }`
+
+export default {
+  asyncData({ $sanity }) {
+    return $sanity.fetch(query);
+  }
+}
 </script>
 
 <style>

@@ -33,6 +33,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/sanity'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -43,6 +44,10 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
+
+  sanity: {
+    projectId: process.env.SANITY_PROJECT_ID
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
